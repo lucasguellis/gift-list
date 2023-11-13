@@ -39,6 +39,8 @@ export default {
 				await env.BUCKET.put(body.key, JSON.stringify(body.value));
 				return new Response('ok', { headers: corsHeaders2 });
 			case "GET":
+				const url = new URL(request.url);
+				const key = url.pathname.slice(1);
 				const corsHeaders3 = {
 					"Access-Control-Allow-Origin": "*",
 					"Access-Control-Allow-Methods": "GET, OPTIONS",
@@ -46,7 +48,7 @@ export default {
 				};
 				let object;
 
-				const objectName = "gift-list"
+				const objectName = `gift-list-${key}`
 				object = await env.BUCKET.get(`${objectName}.json`);
 
 				if (object == null) {
