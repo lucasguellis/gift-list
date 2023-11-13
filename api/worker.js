@@ -20,7 +20,7 @@ export default {
 			case "OPTIONS":
 				const corsHeaders1 = {
 					"Access-Control-Allow-Origin": "*",
-					"Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+					"Access-Control-Allow-Methods": "GET, PUT, OPTIONS",
 					"Access-Control-Allow-Headers": "*",
 				};
 				return new Response('ok', { headers: corsHeaders1 });
