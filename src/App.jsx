@@ -8,9 +8,23 @@ function App() {
   const [data, setData] = useState([]);
   const [groupedData, setGroupedData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const API_URL = (context) => context.env.API_URL;
-  const AUTH_KEY_SECRET = process.env.AUTH_KEY_SECRET;
+  const [API_URL, setAPI_URL] = useState('');
+  const [AUTH_KEY_SECRET, setAUTH_KEY_SECRET] = useState('');
   const params = useParams();
+
+  useEffect(() => {
+    const getEnvApi = async() => await fetch('envs/api_url')
+    .then(res => res.text())
+    .then(res => setAPI_URL(res));
+    getEnvApi();
+  }, [setAPI_URL])
+
+  useEffect(() => {
+    const getEnvAuthKey = async() => await fetch('envs/secret')
+    .then(res => res.text())
+    .then(res => setAUTH_KEY_SECRET(res));
+    getEnvAuthKey();
+  }, [setAUTH_KEY_SECRET])
 
   useEffect(() => {
     setIsLoading(true);
