@@ -8,7 +8,7 @@ function App() {
   const [data, setData] = useState([]);
   const [groupedData, setGroupedData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const API_URL = process.env.API_URL;
+  const API_URL = (context) => context.env.API_URL;
   const AUTH_KEY_SECRET = process.env.AUTH_KEY_SECRET;
   const params = useParams();
 
