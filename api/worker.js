@@ -10,7 +10,6 @@
 
 // Check requests for a pre-shared secret
 const hasValidHeader = (request, env) => {
-	console.log(env.AUTH_KEY_SECRET);
 	return request.headers.get('X-Auth-Key') === env.AUTH_KEY_SECRET;
 };
 
@@ -35,7 +34,6 @@ export default {
 					"Content-Type": "application/json",
 				};
 				const body = await request.json();
-				console.log(env.BUCKET);
 				await env.BUCKET.put(body.key, JSON.stringify(body.value));
 				return new Response('ok', { headers: corsHeaders2 });
 			case "GET":
