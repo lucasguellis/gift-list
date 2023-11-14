@@ -6,7 +6,7 @@ function Home() {
   useEffect(() => {
     const getEnv = async() => await fetch('envs/api_url', {
       method: "GET",
-    }).then(res => {console.log(res); setTest(res.text())});
+    }).then(res => {console.log(res.text()); setTest(res.text())});
     getEnv();
   }, [setTest])
   console.log(teste);
