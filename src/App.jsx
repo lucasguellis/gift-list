@@ -71,7 +71,7 @@ function App() {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        Authentication: `X-Auth-Key ${AUTH_KEY_SECRET}`,
+        "X-Auth-Key": `${AUTH_KEY_SECRET}`,
       },
       body: JSON.stringify({
         key: `gift-list-${params.name}.json`,
