@@ -4,11 +4,12 @@ import { useParams } from 'react-router';
 import Checklist from './components/checklist';
 
 
-function App(context) {
+function App() {
   const [data, setData] = useState([]);
   const [groupedData, setGroupedData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const API_URL = context.env.API_URL;
+  const API_URL = process.env.API_URL;
+  const AUTH_KEY_SECRET = process.env.AUTH_KEY_SECRET;
   const params = useParams();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ function App(context) {
     setGroupedData(groupedData);
   }, [data]);
 
-  function handleCheckboxChange(tag, itemName, context) {
+  function handleCheckboxChange(tag, itemName) {
     // Update the local state
     const updatedData = data.map((item) =>
       item.tag === tag && item.name === itemName
@@ -56,7 +57,7 @@ function App(context) {
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        Authentication: `X-Auth-Key ${context.env.AUTH_KEY_SECRET}`,
+        Authentication: `X-Auth-Key ${AUTH_KEY_SECRET}`,
       },
       body: JSON.stringify({
         key: `gift-list-${params.name}.json`,
