@@ -18,6 +18,7 @@
   },
   "scripts": {
     "start": "env-cmd -f .env react-scripts start",
+    "local:api": "wrangler pages dev functions",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -45,6 +46,6 @@
     ]
   },
   "devDependencies": {
-    "wrangler": "^3.15.0"
+    "wrangler": "^3.16.0"
   }
 }
