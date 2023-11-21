@@ -85,17 +85,19 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {isLoading ? <p>Carregando...</p> : (
-          data.length > 0 ? (
-            <Checklist data={groupedData} handler={handleCheckboxChange}/>
-          ) : (
-            <p>Essa lista não existe :(</p>
-          )
-        )}
-      </header>
-    </div>
+      <div className="App-body pb-5">
+      <div className="container text-center">
+        <div className="row">
+            {isLoading ? <p>Carregando...</p> : (
+              data.length > 0 ? (
+                <Checklist data={groupedData} handler={handleCheckboxChange}/>
+              ) : (
+                <p>Essa lista não existe :(</p>
+              )
+            )}
+        </div>
+      </div>
+      </div>
   );
 }
 
