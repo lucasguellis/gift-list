@@ -10,21 +10,22 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [API_URL, setAPI_URL] = useState('');
   const [AUTH_KEY_SECRET, setAUTH_KEY_SECRET] = useState('');
+  const env_url = process.env.REACT_APP_API_URL || "";
   const params = useParams();
 
   useEffect(() => {
-    const getEnvApi = async() => await fetch('envs/api_url')
+    const getEnvApi = async() => await fetch(env_url + 'envs/api_url')
     .then(res => res.text())
     .then(res => setAPI_URL(res));
     getEnvApi();
-  }, [setAPI_URL])
+  }, [setAPI_URL, env_url])
 
   useEffect(() => {
-    const getEnvAuthKey = async() => await fetch('envs/secret')
+    const getEnvAuthKey = async() => await fetch(env_url + 'envs/secret')
     .then(res => res.text())
     .then(res => setAUTH_KEY_SECRET(res));
     getEnvAuthKey();
-  }, [setAUTH_KEY_SECRET])
+  }, [setAUTH_KEY_SECRET, env_url])
 
   useEffect(() => {
     setIsLoading(true);
